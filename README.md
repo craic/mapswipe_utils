@@ -89,10 +89,24 @@ Taken together these create a unique tile ID
     "task_y": "123781",
     "task_z": "18",
 
-    become...
+    ...become...
 
     "id": "18-134732-123781"
 ```
+
+The terms yes_count, maybe_count and bad_imagery_count represent the assignments for this tile and these are evaluated to produce an
+aggregate decision, where 1 is a positive/yes call, 2 is maybe/ambiguous and 3 is a bad image
+```json
+    "bad_imagery_count": 0,
+    "maybe_count": 0,
+    "yes_count": 3,
+
+    ...become...
+
+    "decision": 1
+```
+
+
 
 [...]
 
