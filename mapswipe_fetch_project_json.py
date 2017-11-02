@@ -1,17 +1,18 @@
 #!/usr/local/bin/python3
 
+# Copyright 2017  Robert Jones  jones@craic.com
+
+# Project repo: https://github.com/craic/mapswipe_utils
+
+# Released under the terms of the MIT License
+
 # Fetch a project JSON file and write list files for
 # positive, ambiguous and bad tiles
 
-# change it to read from a downloaded json file...
+# Fetch JSON file from api.mapswipe.org  e.g. http://api.mapswipe.org/projects/4877.json
 
-import argparse
-import sys
-import os
-import json
-import urllib.request
-
-# Uses the mapswipe API as defined in: https://docs.google.com/document/d/1RwN4BNhgMT5Nj9EWYRBWxIZck5iaawg9i_5FdAAderw/
+# The mapswipe API is defined in:
+# https://docs.google.com/document/d/1RwN4BNhgMT5Nj9EWYRBWxIZck5iaawg9i_5FdAAderw/
 
 # example record
 # {
@@ -28,23 +29,24 @@ import urllib.request
 #   "decision": 1
 # },
 
+import argparse
+import sys
+import os
+import json
+import urllib.request
 
-mapswipe_project_url = ''
+
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--project-id', metavar='<project_id>', type=int, required=True,
+    parser.add_argument('--project', metavar='<project_id>', type=int, required=True,
                         help='MapSwipe Project ID to retrieve')
-    parser.add_argument('--min-positive', metavar='<min_positive>', type=int, default=1,
-                        help='Minimum count of positives')
 
-    parser.add_argument('--output-dir', '-p', metavar='<output_directory>', default='projects',
-                        help='Output directory in which to store downloaded data. Default: "projects".')
+    parser.add_argument('--outputdir', '-p', metavar='<output_directory>', default='.',
+                        help='Output directory in which to store downloaded data. Default: "."')
 
 
     args = parser.parse_args()
-
-    min_positive_count = int(args.min_positive)
 
     # does projects_dir exist?
     if not os.path.isdir(args.output_dir):
@@ -56,17 +58,17 @@ def main():
     if not os.path.isdir(project_path):
         os.makedirs(project_path)
 
-    # target URL
-    url_string = "http://api.mapswipe.org/projects/{}.json".format(args.project_id)
-
-    # print(url_string)
 
     categories = ['positive', 'ambiguous', 'bad']
     tile_category = {}
     for category in categories:
       tile_category[category] = []
 
+    # construct the URL
+    api_url = "http://api.mapswipe.org/projects/"
+    url_string = "{}{}.json".format(api_url, args.project_id)
 
+    # fetch the JSON file and partition the tile_ids into 3 arrays
     with urllib.request.urlopen(url_string) as url:
       json_text = url.read().decode()
 
@@ -75,17 +77,12 @@ def main():
       with open(json_out_path, 'wt') as f:
         f.write(json_text)
 
-      # partition tiles into positive, ambiguous, bad categories
-      # - and require a yes_count of at least 2...
+      # partition tile ids into positive, ambiguous, bad categories
       tiles = json.loads(json_text)
       for tile in tiles:
         decision = float(tile['decision'])
         if decision <= 1.0:
-          # ----------------------------------->>>>
-          if int(tile['yes_count']) >= min_positive_count:
-            tile_category['positive'].append(tile['id'])
-          else:
-            tile_category['ambiguous'].append(tile['id'])
+          tile_category['positive'].append(tile['id'])
         elif decision <= 2.0:
           tile_category['ambiguous'].append(tile['id'])
         else:
@@ -93,14 +90,14 @@ def main():
 
     # write the tile ids to files
     for category in categories:
-      tile_out_path = os.path.join(project_path, "{}_tiles.lst".format(category))
+      tile_out_path = os.path.join(project_path, "all_{}_tiles.lst".format(category))
       with open(tile_out_path, 'wt') as f:
         for tile_id in sorted(tile_category[category]):
           f.write(tile_id + '\n')
 
     # write a basic README file
     readme_path = os.path.join(project_path, "README")
-    text = "Project JSON file downloaded from {}\n\n".format(url_string)
+    text = "MapSwipe Project {}\n\nproject JSON file downloaded from {}\n\n".format(args.project_id, url_string)
     with open(readme_path, 'wt') as f:
       f.write(text)
 
