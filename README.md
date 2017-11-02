@@ -42,9 +42,18 @@ Here are some other MapSwipe resources:
 [MapSwipe API document](https://docs.google.com/document/d/1RwN4BNhgMT5Nj9EWYRBWxIZck5iaawg9i_5FdAAderw/edit#heading=h.wp1a8ue6nwhv)
 
 
-## MapSwipe API
+## MapSwipe Data
 
+Publicly available MapSwipe data can be found at two locations:
+
+[MapSwipe Analytics](http://mapswipe.geog.uni-heidelberg.de/) provides a map of locations of MapSwipe projects around the world and offers
+several types of data for each project.
+
+[http://api.mapswipe.org](http://api.mapswipe.org) provides JSON formatted data on specific projects. Note that this site does not provide an
+index of its resources. Look at the
 [MapSwipe API document](https://docs.google.com/document/d/1RwN4BNhgMT5Nj9EWYRBWxIZck5iaawg9i_5FdAAderw/edit#heading=h.wp1a8ue6nwhv)
+for URLs to specific files.
+
 
 [...]
 
