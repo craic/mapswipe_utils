@@ -55,6 +55,24 @@ index of its resources. Look at the
 for URLs to specific files.
 
 
+## Data Concepts
+
+[...]
+
+## Project Directory Structure
+
+The directory structure for a single MapSwipe project that I use is as follows:
+
+```
+./projects/<project_id>
+    README
+    project.json
+    all_positive_tiles.lst
+    all_ambiguous_tiles.lst
+    all_bad_image_tiles.lst
+
+```
+
 [...]
 
 ## Utility Scripts
