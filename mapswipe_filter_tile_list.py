@@ -85,7 +85,7 @@ def main():
 
 # need this ? - yes
     parser.add_argument('--tilelist', '-t', metavar='<tile_list_file>', required=True,
-                        help='Output directory in which to store downloaded data. Default: "."')
+                        help='File of tile IDs')
 
     parser.add_argument('--attribute', '-a', metavar='<json_attribute>', required=True,
                         help='Name of JSON attribute to filter on')
