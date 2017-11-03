@@ -79,7 +79,7 @@ def check_tile_info(tile, attribute_name, operator, value):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Filter a list of MapSwipe Tile IDs using user-supplied criteria")
     parser.add_argument('--jsonfile', '-j', metavar='<project_json_file>', required=True,
                         help='MapSwipe Project JSON file')
 

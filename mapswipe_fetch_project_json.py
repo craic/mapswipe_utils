@@ -38,7 +38,7 @@ import urllib.request
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Fetch the JSON file for a MapSwipe Project")
     parser.add_argument('--project', '-p', metavar='<project_id>', type=int, required=True,
                         help='MapSwipe Project ID to retrieve')
 

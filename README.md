@@ -32,7 +32,7 @@ This project is very much a **work in progress** and things will change without 
 
 ## MapSwipe Resources
 
-Here are some other MapSwipe resources:
+Here are the main MapSwipe resources:
 
 [MapSwipe web site](http://mapswipe.org/)
 
@@ -107,10 +107,6 @@ aggregate decision, where 1 is a positive/yes call, 2 is maybe/ambiguous and 3 i
 ```
 
 
-
-[...]
-
-
 Publicly available MapSwipe data can be found at two locations:
 
 [MapSwipe Analytics](http://mapswipe.geog.uni-heidelberg.de/) provides a map of locations of MapSwipe projects around the world and offers
@@ -120,12 +116,9 @@ several types of data for each project.
 index of its resources.
 
 
-
-[...]
-
 ## Project Directory Structure
 
-The directory structure for a single MapSwipe project that I use is as follows:
+The directory structure that I use for a single MapSwipe project is as follows:
 
 ```
 ./projects/<project_id>
@@ -137,9 +130,63 @@ The directory structure for a single MapSwipe project that I use is as follows:
 
 ```
 
-[...]
 
 ## Utility Scripts
 
-[...]
+### mapswipe_fetch_project_json.py
 
+```
+$ ./mapswipe_fetch_project_json.py --help
+usage: mapswipe_fetch_project_json.py [-h] --project <project_id>
+                                      [--outdir <output_directory>]
+
+Fetch the JSON file for a MapSwipe Project
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --project <project_id>, -p <project_id>
+                        MapSwipe Project ID to retrieve
+  --outdir <output_directory>, -o <output_directory>
+                        Output directory in which to store downloaded data.
+                        Default: "."
+```
+
+For example:
+
+```
+$ ./mapswipe_fetch_project_json.py --project 7260 --outdir .
+```
+
+### mapswipe_filter_tile_list.py
+
+```
+$ ./mapswipe_filter_tile_list.py --help
+usage: mapswipe_filter_tile_list.py [-h] --jsonfile <project_json_file>
+                                    --tilelist <tile_list_file> --attribute
+                                    <json_attribute> --value <value>
+                                    --operator <operator>
+
+Filter a list of MapSwipe Tile IDs using user-supplied criteria
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --jsonfile <project_json_file>, -j <project_json_file>
+                        MapSwipe Project JSON file
+  --tilelist <tile_list_file>, -t <tile_list_file>
+                        Output directory in which to store downloaded data.
+                        Default: "."
+  --attribute <json_attribute>, -a <json_attribute>
+                        Name of JSON attribute to filter on
+  --value <value>, -v <value>
+                        value
+  --operator <operator>, -o <operator>
+                        Operator [lt, le, eq, ge, gt]
+```
+
+For example:
+
+```
+$ ./mapswipe_utils/mapswipe_filter_tile_list.py --json project.json \
+         --tilelist all_positive_tiles.lst \
+         --operator gt --attr yes_count --value 2 > tmp.lst
+```
