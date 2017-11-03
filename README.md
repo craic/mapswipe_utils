@@ -193,6 +193,10 @@ $ ./mapswipe_utils/mapswipe_filter_tile_list.py --json project.json \
 
 ### mapswipe_fetch_tiles.py
 
+To access Bing Maps image tiles you will need a Bing Maps API key which you can create, for free, at the
+[Bing Maps Developer Site](https://www.bingmapsportal.com/). This allows you to access up to 50,000 tiles
+per day - which is easy to exceed.
+
 ```
 $ ../../mapswipe_utils/mapswipe_fetch_tiles.py --help
 usage: mapswipe_fetch_tiles.py [-h] --tilelist <tile_list_file>
