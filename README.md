@@ -221,3 +221,32 @@ For example:
 $ ./mapswipe_fetch_tiles.py --keyfile maps_api_key --outdir positive_tiles --tilelist positive_tile.lst
 ```
 
+### mapswipe_find_negative_neighbors.py
+
+For machine learning we need a set of negative image tiles as well as the positives.
+The MapSwipe API does not explicitly list negative tiles so we need to look for them
+and this script tries to find them in the immediate vicinity of each positive tile.
+
+The rationale behind this is that nearby tiles should have similar terrain.
+
+```
+$ ./mapswipe_utils/mapswipe_find_negative_neighbors.py --help
+usage: mapswipe_find_negative_neighbors.py [-h] --jsonfile <json_file>
+                                           --tilelist <tile_id_file>
+
+Identify negative MapSwipe tiles near to positive tiles
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --jsonfile <json_file>, -f <json_file>
+                        MapSwipe Project JSON file
+  --tilelist <tile_id_file>, -p <tile_id_file>
+                        File of positive tile IDs
+```
+
+For example:
+
+```
+$ ./mapswipe_utils/mapswipe_find_negative_neighbors.py --jsonfile project.json --tilelist positive_tiles.lst > negative_tiles.lst
+```
+
