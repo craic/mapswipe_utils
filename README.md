@@ -188,5 +188,32 @@ For example:
 ```
 $ ./mapswipe_utils/mapswipe_filter_tile_list.py --json project.json \
          --tilelist all_positive_tiles.lst \
-         --operator gt --attr yes_count --value 2 > tmp.lst
+         --operator gt --attr yes_count --value 2 > selected_positive_tiles.lst
 ```
+
+
+
+```
+$ ../../mapswipe_utils/mapswipe_fetch_tiles.py --help
+usage: mapswipe_fetch_tiles.py [-h] --tilelist <tile_list_file>
+                               [--outdir <output_directory>] --keyfile <bing
+                               maps key file>
+
+Fetch a list of Bing Maps image tiles
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tilelist <tile_list_file>, -t <tile_list_file>
+                        MapSwipe Project Tile List file
+  --outdir <output_directory>, -o <output_directory>
+                        Output directory to download to. Default: "."
+  --keyfile <bing maps key file>, -k <bing maps key file>
+                        File containing the Bing maps API key
+```
+
+For example:
+
+```
+$ ./mapswipe_fetch_tiles.py --keyfile maps_api_key --outdir positive_tiles --tilelist positive_tile.lst
+```
+
