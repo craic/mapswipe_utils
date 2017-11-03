@@ -285,3 +285,38 @@ For example:
 $ ./mapswipe_grid_random_tiles.py --tiledir positive_tiles  --tilelist all_positive_tiles.lst --width 4 --height 2
 ```
 
+### mapswipe_partition_tiles.py
+
+Given directories of positive and negative image tiles, partition these into training, validation and test directories
+for use as input for machine learning code. The user can specify the fraction of each input set that goes to each target set.
+
+The test set can be empty. It is simply the remainder after the training and validation sets are assigned.
+
+```
+./mapswipe_partition_tiles.py --help
+usage: mapswipe_partition_tiles.py [-h] --positives <directory_of_positives>
+                                   --negatives <directory_of_negatives>
+                                   --outdir <output_directory>
+                                   [--train_frac <fraction for training>]
+                                   [--validation_frac <fraction for validation>]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --positives <directory_of_positives>, -p <directory_of_positives>
+                        Directory of Positive images
+  --negatives <directory_of_negatives>, -n <directory_of_negatives>
+                        Directory of Negative images
+  --outdir <output_directory>, -o <output_directory>
+                        Output Directory
+  --train_frac <fraction for training>, -t <fraction for training>
+                        Fraction of images to use for training
+  --validation_frac <fraction for validation>, -v <fraction for validation>
+                        Fraction of images to use for validation
+```
+
+For example:
+
+```
+$ ./mapswipe_partition_tiles.py --positives positive_tiles --negative negative_tiles \
+     --outdir test --train_frac 0.8 --validation_frac 0.2
+```
