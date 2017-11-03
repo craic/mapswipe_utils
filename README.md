@@ -127,7 +127,11 @@ The directory structure that I use for a single MapSwipe project is as follows:
     all_positive_tiles.lst
     all_ambiguous_tiles.lst
     all_bad_image_tiles.lst
-
+    selected_positive_tiles.lst
+    selected_negative_tiles.lst
+    positive_tiles    - directory
+    negative_tiles    - directory
+    [...]
 ```
 
 
@@ -253,6 +257,9 @@ $ ./mapswipe_find_negative_neighbors.py --jsonfile project.json --tilelist posit
 ```
 
 ### mapswipe_grid_random_tiles.py
+
+This displays a grid of image tiles selected at random from a file of tile IDs.
+I use it to get a sense of the images in a particular set.
 
 ```
 $ ./mapswipe_grid_random_tiles.py --help
