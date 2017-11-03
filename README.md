@@ -133,6 +133,8 @@ The directory structure that I use for a single MapSwipe project is as follows:
 
 ## Utility Scripts
 
+todo - add list of modules that need to be installed...
+
 ### mapswipe_fetch_project_json.py
 
 ```
@@ -186,7 +188,7 @@ optional arguments:
 For example:
 
 ```
-$ ./mapswipe_utils/mapswipe_filter_tile_list.py --json project.json \
+$ ./mapswipe_filter_tile_list.py --json project.json \
          --tilelist all_positive_tiles.lst \
          --operator gt --attr yes_count --value 2 > selected_positive_tiles.lst
 ```
@@ -198,7 +200,7 @@ To access Bing Maps image tiles you will need a Bing Maps API key which you can 
 per day - which is easy to exceed.
 
 ```
-$ ../../mapswipe_utils/mapswipe_fetch_tiles.py --help
+$ ./mapswipe_fetch_tiles.py --help
 usage: mapswipe_fetch_tiles.py [-h] --tilelist <tile_list_file>
                                [--outdir <output_directory>] --keyfile <bing
                                maps key file>
@@ -230,7 +232,7 @@ and this script tries to find them in the immediate vicinity of each positive ti
 The rationale behind this is that nearby tiles should have similar terrain.
 
 ```
-$ ./mapswipe_utils/mapswipe_find_negative_neighbors.py --help
+$ ./mapswipe_find_negative_neighbors.py --help
 usage: mapswipe_find_negative_neighbors.py [-h] --jsonfile <json_file>
                                            --tilelist <tile_id_file>
 
@@ -247,6 +249,32 @@ optional arguments:
 For example:
 
 ```
-$ ./mapswipe_utils/mapswipe_find_negative_neighbors.py --jsonfile project.json --tilelist positive_tiles.lst > negative_tiles.lst
+$ ./mapswipe_find_negative_neighbors.py --jsonfile project.json --tilelist positive_tiles.lst > negative_tiles.lst
+```
+
+### mapswipe_grid_random_tiles.py
+
+```
+$ ./mapswipe_grid_random_tiles.py --help
+usage: mapswipe_grid_random_tiles.py [-h] --tile_list_file <tile_list_file>
+                                     --tile_dir <tile_directory> --width
+                                     <width> --height <height>
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tile_list_file <tile_list_file>, -f <tile_list_file>
+                        MapSwipe Project Tile List file
+  --tile_dir <tile_directory>, -d <tile_directory>
+                        Directory of tile images
+  --width <width>, -x <width>
+                        Number of tiles wide
+  --height <height>, -y <height>
+                        Number of tiles high
+```
+
+For example:
+
+```
+$ ./mapswipe_grid_random_tiles.py --tiledir positive_tiles  --tilelist all_positive_tiles.lst --width 4 --height 2
 ```
 
