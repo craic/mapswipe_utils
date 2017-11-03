@@ -191,7 +191,7 @@ $ ./mapswipe_utils/mapswipe_filter_tile_list.py --json project.json \
          --operator gt --attr yes_count --value 2 > selected_positive_tiles.lst
 ```
 
-
+### mapswipe_fetch_tiles.py
 
 ```
 $ ../../mapswipe_utils/mapswipe_fetch_tiles.py --help
