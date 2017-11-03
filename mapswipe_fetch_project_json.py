@@ -39,22 +39,25 @@ import urllib.request
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--project', metavar='<project_id>', type=int, required=True,
+    parser.add_argument('--project', '-p', metavar='<project_id>', type=int, required=True,
                         help='MapSwipe Project ID to retrieve')
 
-    parser.add_argument('--outputdir', '-p', metavar='<output_directory>', default='.',
+    parser.add_argument('--outdir', '-o', metavar='<output_directory>', default='.',
                         help='Output directory in which to store downloaded data. Default: "."')
 
 
     args = parser.parse_args()
 
+    project_id = str(args.project)
+    output_dir = args.outdir
+
     # does projects_dir exist?
-    if not os.path.isdir(args.output_dir):
+    if not os.path.isdir(output_dir):
       print("Error: output_dir does not exist")
       exit()
 
     # does project subdirectory exist? if not then create it
-    project_path = os.path.join(args.output_dir, str(args.project_id))
+    project_path = os.path.join(output_dir, project_id)
     if not os.path.isdir(project_path):
         os.makedirs(project_path)
 
@@ -66,14 +69,14 @@ def main():
 
     # construct the URL
     api_url = "http://api.mapswipe.org/projects/"
-    url_string = "{}{}.json".format(api_url, args.project_id)
+    url_string = "{}{}.json".format(api_url, project_id)
 
     # fetch the JSON file and partition the tile_ids into 3 arrays
     with urllib.request.urlopen(url_string) as url:
       json_text = url.read().decode()
 
       # dump the raw json to a file
-      json_out_path = os.path.join(project_path, "project_{}.json".format(args.project_id))
+      json_out_path = os.path.join(project_path, "project.json".format(project_id))
       with open(json_out_path, 'wt') as f:
         f.write(json_text)
 
@@ -97,7 +100,7 @@ def main():
 
     # write a basic README file
     readme_path = os.path.join(project_path, "README")
-    text = "MapSwipe Project {}\n\nproject JSON file downloaded from {}\n\n".format(args.project_id, url_string)
+    text = "MapSwipe Project {}\n\nproject JSON file downloaded from {}\n\n".format(project_id, url_string)
     with open(readme_path, 'wt') as f:
       f.write(text)
 
