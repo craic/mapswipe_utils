@@ -29,6 +29,12 @@ time using it on a current project. That will help you understand some of the co
 
 This project is very much a **work in progress** and things will change without notice.
 
+## MapSwipe Machine Learning
+
+These utilities were written to support work on machine learning with the MapSwipe data.
+
+That repository is [mapswipe_convnet](https://github.com/craic/mapswipe_convnet)
+
 
 ## MapSwipe Resources
 
