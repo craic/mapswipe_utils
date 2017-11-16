@@ -145,6 +145,11 @@ The directory structure that I use for a single MapSwipe project is as follows:
 
 todo - add list of modules that need to be installed...
 
+Tile IDs refer to the identifiers in the MapSwipe project JSON files.
+
+For example **18-135793-124051** refers to the Bing Maps tile with X coordinate 135793, Y coordinate 124051 and Zoom level 18
+
+
 ### mapswipe_fetch_project_json.py
 
 ```
