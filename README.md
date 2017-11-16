@@ -174,8 +174,9 @@ $ ./mapswipe_fetch_project_json.py --project 7260 --outdir .
 ```
 $ ./mapswipe_filter_tile_list.py --help
 usage: mapswipe_filter_tile_list.py [-h] --jsonfile <project_json_file>
-                                    --tilelist <tile_list_file> --attribute
-                                    <json_attribute> --value <value>
+                                    --tilelist <tile_list_file>
+                                    --attribute <json_attribute>
+                                    --value <value>
                                     --operator <operator>
 
 Filter a list of MapSwipe Tile IDs using user-supplied criteria
@@ -212,8 +213,8 @@ per day - which is easy to exceed.
 ```
 $ ./mapswipe_fetch_tiles.py --help
 usage: mapswipe_fetch_tiles.py [-h] --tilelist <tile_list_file>
-                               [--outdir <output_directory>] --keyfile <bing
-                               maps key file>
+                               [--outdir <output_directory>]
+                               --keyfile <bing maps key file>
 
 Fetch a list of Bing Maps image tiles
 
@@ -232,6 +233,43 @@ For example:
 ```
 $ ./mapswipe_fetch_tiles.py --keyfile maps_api_key --outdir positive_tiles --tilelist positive_tile.lst
 ```
+
+### mapswipe_fetch_tile_block.py
+
+Fetch a rectangular block of Bing Maps image tiles
+
+```
+$ ./mapswipe_fetch_tile_block.py --help
+usage: mapswipe_fetch_tile_block.py [-h] [--outdir <output_directory>]
+                                    --keyfile <bing maps key file>
+                                    --x <x dimension low bound tile id>
+                                    --y <y dimension low bound tile id>
+                                    --nx <number of tiles in x dimension>
+                                    --ny <number of tiles in y dimension>
+                                    [--zoom <bing maps zoom level>]
+
+Fetch a block of Bing Maps image tiles
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --outdir <output_directory>, -o <output_directory>
+                        Output directory to download to. Default: "."
+  --keyfile <bing maps key file>, -k <bing maps key file>
+                        File containing the Bing maps API key
+  --x <x dimension low bound tile id>
+                        X dimension lower bound
+  --y <y dimension low bound tile id>
+                        Y dimension lower bound
+  --nx <number of tiles in x dimension>
+                        number of tiles in X dimension
+  --ny <number of tiles in y dimension>
+                        number of tiles in Y dimension
+  --zoom <bing maps zoom level>
+                        Bing Maps zoom level - default 18
+```
+
+
+
 
 ### mapswipe_find_negative_neighbors.py
 
