@@ -61,7 +61,7 @@ def main():
         print ("Problem reading Bing Maps API key")
 
     # Bing Maps limits access to 50,000 records per day so spread them out
-    request_delay = 1 + math.ceil((24.0 * 60.0 * 60.0) / 50000)
+    request_delay = math.ceil((24.0 * 60.0 * 60.0) / 50000)
 
     #create output directory if it doesn't exist
     if not os.path.exists(output_dir):

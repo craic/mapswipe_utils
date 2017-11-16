@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 
-# mapswipe_grid_random_tiles.py
+# mapswipe_display_grid_random_tiles.py
 
 # Copyright 2017  Robert Jones  jones@craic.com
 
@@ -27,15 +27,15 @@ def main():
                         help='MapSwipe Project Tile List file')
     parser.add_argument('--tiledir', '-d', metavar='<tile_directory>', required=True,
                         help='Directory of tile images')
-    parser.add_argument('--width', '-x', metavar='<width>', type=int, required=True,
-                        help='Number of tiles wide')
-    parser.add_argument('--height', '-y', metavar='<height>', type=int, required=True,
-                        help='Number of tiles high')
+    parser.add_argument('--nx', '-x', metavar='<nx>', type=int, required=True,
+                        help='Number of tiles in X dimension')
+    parser.add_argument('--ny', '-y', metavar='<ny>', type=int, required=True,
+                        help='Number of tiles in Y dimension')
     args = parser.parse_args()
 
 
-    nx = int(args.width)
-    ny = int(args.height)
+    nx = int(args.nx)
+    ny = int(args.ny)
 
     tile_list_file = args.tilelist
     tile_dir  = args.tiledir

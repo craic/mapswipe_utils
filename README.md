@@ -262,14 +262,14 @@ For example:
 $ ./mapswipe_find_negative_neighbors.py --jsonfile project.json --tilelist positive_tiles.lst > negative_tiles.lst
 ```
 
-### mapswipe_grid_random_tiles.py
+### mapswipe_display_grid_random_tiles.py
 
 This displays a grid of image tiles selected at random from a file of tile IDs.
 I use it to get a sense of the images in a particular set.
 
 ```
-$ ./mapswipe_grid_random_tiles.py --help
-usage: mapswipe_grid_random_tiles.py [-h] --tile_list_file <tile_list_file>
+$ ./mapswipe_display_grid_random_tiles.py --help
+usage: mapswipe_display_grid_random_tiles.py [-h] --tile_list_file <tile_list_file>
                                      --tile_dir <tile_directory> --width
                                      <width> --height <height>
 
@@ -279,16 +279,14 @@ optional arguments:
                         MapSwipe Project Tile List file
   --tile_dir <tile_directory>, -d <tile_directory>
                         Directory of tile images
-  --width <width>, -x <width>
-                        Number of tiles wide
-  --height <height>, -y <height>
-                        Number of tiles high
+  --nx <nx>, -x <nx>    Number of tiles in X dimension
+  --ny <ny>, -y <ny>    Number of tiles in Y dimension
 ```
 
 For example:
 
 ```
-$ ./mapswipe_grid_random_tiles.py --tiledir positive_tiles  --tilelist all_positive_tiles.lst --width 4 --height 2
+$ ./mapswipe_display_grid_random_tiles.py --tiledir positive_tiles  --tilelist all_positive_tiles.lst --nx 4 --ny 2
 ```
 
 ### mapswipe_partition_tiles.py
