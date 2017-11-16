@@ -268,7 +268,25 @@ optional arguments:
                         Bing Maps zoom level - default 18
 ```
 
+### mapswipe_fetch_single_tile.py
 
+Fetch a single Bing maps image tile
+
+```
+$ ./mapswipe_fetch_single_tile.py --help
+usage: mapswipe_fetch_single_tile.py [-h] --tileid <tile_id>
+                                     [--outdir <output_directory>]
+                                     --keyfile <bing maps key file>
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tileid <tile_id>, -f <tile_id>
+                        Tile ID
+  --outdir <output_directory>, -o <output_directory>
+                        Output directory to download to. Default: "."
+  --keyfile <bing maps key file>, -k <bing maps key file>
+                        File containing the Bing maps API key
+```
 
 
 ### mapswipe_find_negative_neighbors.py
