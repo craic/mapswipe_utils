@@ -323,32 +323,6 @@ For example:
 $ ./mapswipe_find_negative_neighbors.py --jsonfile project.json --tilelist positive_tiles.lst > negative_tiles.lst
 ```
 
-### mapswipe_display_grid_random_tiles.py
-
-This displays a grid of image tiles selected at random from a file of tile IDs.
-I use it to get a sense of the images in a particular set.
-
-```
-$ ./mapswipe_display_grid_random_tiles.py --help
-usage: mapswipe_display_grid_random_tiles.py [-h] --tile_list_file <tile_list_file>
-                                     --tile_dir <tile_directory> --width
-                                     <width> --height <height>
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --tile_list_file <tile_list_file>, -f <tile_list_file>
-                        MapSwipe Project Tile List file
-  --tile_dir <tile_directory>, -d <tile_directory>
-                        Directory of tile images
-  --nx <nx>, -x <nx>    Number of tiles in X dimension
-  --ny <ny>, -y <ny>    Number of tiles in Y dimension
-```
-
-For example:
-
-```
-$ ./mapswipe_display_grid_random_tiles.py --tiledir positive_tiles  --tilelist all_positive_tiles.lst --nx 4 --ny 2
-```
 
 ### mapswipe_partition_tiles.py
 
@@ -384,4 +358,60 @@ For example:
 ```
 $ ./mapswipe_partition_tiles.py --positives positive_tiles --negative negative_tiles \
      --outdir test --train_frac 0.8 --validation_frac 0.2
+```
+
+
+### mapswipe_display_grid_random_tiles.py
+
+This displays a grid of image tiles selected at random from a file of tile IDs.
+I use it to get a sense of the images in a particular set.
+
+```
+$ ./mapswipe_display_grid_random_tiles.py --help
+usage: mapswipe_display_grid_random_tiles.py [-h] --tile_list_file <tile_list_file>
+                                     --tile_dir <tile_directory> --width
+                                     <width> --height <height>
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tile_list_file <tile_list_file>, -f <tile_list_file>
+                        MapSwipe Project Tile List file
+  --tile_dir <tile_directory>, -d <tile_directory>
+                        Directory of tile images
+  --nx <nx>, -x <nx>    Number of tiles in X dimension
+  --ny <ny>, -y <ny>    Number of tiles in Y dimension
+```
+
+For example:
+
+```
+$ ./mapswipe_display_grid_random_tiles.py --tiledir positive_tiles  --tilelist all_positive_tiles.lst --nx 4 --ny 2
+```
+
+
+### mapswipe_display_grid_tile_block.py
+
+This displays a grid of a tile block given a directory of adjacent blocks.
+The size of each tile can be changed. It is up to the user to ensure the composite image will
+fit their screen.
+
+```
+$ ./mapswipe_display_grid_tile_block.py --help
+usage: mapswipe_display_grid_tile_block.py [-h] --tiledir <tile_directory>
+                                           [--imagesize <image size>]
+
+Display an image tile block
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tiledir <tile_directory>, -d <tile_directory>
+                        Directory of tile images
+  --imagesize <image size>, -s <image size>
+                        Display size for each image
+```
+
+For example:
+
+```
+$ ./mapswipe_display_grid_tile_block.py --tiledir testdir --imagesize 128
 ```
