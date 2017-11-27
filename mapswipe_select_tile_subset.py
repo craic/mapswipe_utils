@@ -12,10 +12,17 @@
 # Copy selected tiles to the output directory
 # includes an --action arg to include or exclude the list
 
+# tilelist can be a list of :
+#  tile_IDs     e.g. 18-146363-145067
+#  file names   e.g. 18-146363-145067.jpg
+#  CSV lines where the ID is the first field
+#     e.g. 18-147207-144806,positive
+
 import argparse
 import sys
 import os
 import shutil
+import re
 
 
 def main():
@@ -46,8 +53,16 @@ def main():
     # Load the tile IDs
     # tile ID is the first field
     tile_ids = []
+    lines = []
     with open(tile_list_file, 'rt') as f:
-        tile_ids = f.read().splitlines()
+        lines = f.read().splitlines()
+
+    # Handle various inputs - extract IDs like 18-147209-144812
+    tile_id_pattern = re.compile(r'^(\d+-\d+-\d+)')
+    for line in lines:
+        m = tile_id_pattern.search(line)
+        if m:
+            tile_ids.append(m.group(0))
 
     tile_hash = {}
     for tile_id in tile_ids:
