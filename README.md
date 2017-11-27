@@ -415,3 +415,38 @@ For example:
 ```
 $ ./mapswipe_display_grid_tile_block.py --tiledir testdir --imagesize 128
 ```
+
+
+### mapswipe_select_tile_subset.py
+
+Given a directory of map tiles and a file of tile ids, copy a subset of these to a
+new directory based on the action (include or exclude). Useful for creating specific
+subsets of tile images.
+
+```
+$ ./mapswipe_select_tile_subset.py --help
+usage: mapswipe_select_tile_subset.py [-h] --tilelist <tile_list_file>
+                                           --indir <input_directory>
+                                           --outdir <output_directory>
+                                           [--action <action>]
+
+Select a subset of map tiles based on a file of tile IDs
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tilelist <tile_list_file>, -t <tile_list_file>
+                        File of tile IDs
+  --indir <input_directory>, -i <input_directory>
+                        Input Directory
+  --outdir <output_directory>, -o <output_directory>
+                        Output Directory
+  --action <action>, -a <action>
+                        action is to include (default) or exclude the supplied
+                        tile IDs
+```
+
+For example:
+
+```
+$ ./mapswipe_select_tile_subset.py --tilelist select.lst --indir dir1 --outdir dir2 --action exclude
+```
