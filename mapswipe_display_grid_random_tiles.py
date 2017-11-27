@@ -67,6 +67,7 @@ def main():
       x = 1
       for j in range(nx):
         k = random.randint(0, n_tiles-1)
+        # keep looking if this tile has already been seen
         while k in used_ints:
           k = random.randint(0, n_tiles-1)
 
